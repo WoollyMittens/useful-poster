@@ -1,0 +1,85 @@
+/*
+	Form layout
+*/
+#poster-response {
+	display: none;
+	min-height: 6rem;
+	background-color: #ddffee;
+	padding: 1rem 2rem;
+}
+
+#poster-iframe {
+	position: absolute;
+	visibility: hidden;
+}
+
+#poster-form {
+	padding: 0;
+	*, *:before, *:after {
+		box-sizing: border-box;
+	}
+	fieldset {
+		margin: 0;
+		padding: 0;
+	}
+	legend {
+		width: 100%;
+		font-weight: bold;
+		font-size: 1rem;
+		padding: 0;
+		label {
+			margin-bottom: 0;
+		}
+	}
+	label {
+		display: inline-block;
+		margin: 0 0 1em;
+	}
+	input,
+	select,
+	textarea {
+		display: block;
+		width: 100%;
+		&[type="text"] {}
+		&[type="radio"],
+		&[type="checkbox"] {
+			display: inline-block;
+			width: auto;
+		}
+	}
+	textarea {
+		height: 6rem;
+	}
+	button {}
+	footer {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 1em;
+	}
+	.form {
+		&-full {
+			> label {
+				width: 100%;
+			}
+		}
+		&-list {
+			> label {
+				display: block;
+				margin-bottom: 0;
+			}
+		}
+		&-columns {
+			margin: 0 -0.5em;
+			> legend {
+				padding: 0 0.5em;
+			}
+			> label {
+				display: inline-block;
+				width: 50%;
+				margin: 0 -0.3em 1em 0;
+				padding: 0 0.5em;
+				vertical-align: top;
+			}
+		}
+	}
+}
