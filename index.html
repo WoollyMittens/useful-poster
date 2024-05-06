@@ -1,10 +1,93 @@
 <!DOCTYPE html>
 <html>
 	<head>
-    <title>Redirect to demo</title>
-		<script>document.location.replace('./dist/');</script>
+		<meta charset="UTF-8" />
+		<title>poster.js: Submit a form cross domain</title>
+		<style>
+			html { font-family:Sans-Serif; font-size:75%; height:100%; }
+			body { _height:100%; line-height:180%; margin:0; min-height:100%; padding:1%; }
+			.example { max-width:960px; margin:0 auto; padding:0; clear:both; }
+			.example > article, .example > aside { width:98%; padding:2%; }
+			.example-left > article, .example-left > aside { width:48%; padding:1%; float:left; }
+			.example-right > article, .example-right > aside { width:48%; padding:1%; float:right; }
+			fieldset { border:none; }
+		</style>
 	</head>
 	<body>
-		<a href="./dist/">Start</a>
+		<section class="example example-right">
+			<article>
+				<h2>Form Poster</h2>
+				<p>Submit a form asynchronously and cross domain.</p>
+				<p><a class="button downloadButton" href="http://github.com/WoollyMittens/useful-poster" target="_blank">Download (GitHub)</a></p>
+			</article>
+			<aside>
+
+				<!-- Cut below this -->
+				<style>@import url("./css/poster.css");</style>
+				<div id="poster-response"><h3>The form has been received successfully.</h3></div>
+				<form action="php/receiver.php" id="poster-form" method="get" novalidate>
+					<input type="hidden" name="form_submitted" value="true" />
+					<input type="hidden" name="url" value="" />
+					<fieldset>
+						<legend><h2>Example Form</h2></legend>
+						<fieldset>
+							<legend><label for="form_title_m">Radio Options<em>*</em>:</label></legend>
+							<label><input name="form_myradio" required type="radio" data-message="No radio was chosen." title="My Radio" value="a" checked/> Mr.</label>
+							<label><input name="form_myradio" required type="radio" data-message="No radio was chosen." title="My Radio" value="b" /> Ms.</label>
+						</fieldset>
+						<fieldset class="form-columns">
+							<legend>Columns</legend>
+							<label>Text Input<em>*</em>: <input name="form_mytext" pattern="^.+$" required type="text" data-message="No text entered." title="My Text" value="Lorem" /></label>
+							<label>
+								Select List<em>*</em>:
+								<select name="form_myselect" required data-message="No option was chosen." title="My selection">
+									<option value="">-</option>
+									<option value="A" selected>Option A</option>
+									<option value="B">Option B</option>
+								</select>
+							</label>
+							<label>Email<em>*</em>: <input name="form_myemail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required type="email" placeholder="name@domain.com" data-message="No email was entered." title="My Email" value="test@test.com" /></label>
+							<label>File<em>*</em>: <input name="form_myfile" pattern="^.+$" type="file" data-message="No file was selected." title="My File" value="" /></label>
+						</fieldset>
+						<fieldset>
+							<legend><label for="form_myprefix">Multi Field Inputs<em>*</em>:</label></legend>
+							<label>
+								Prefix:
+								<select name="form_myprefix" required data-message="No prefix was selected." title="My Prefix">
+									<option value="">-</option>
+									<option value="A" selected>Option A</option>
+									<option value="B">Option B</option>
+								</select>
+							</label>
+							<label>Number: <input name="form_mynumber" pattern="^\d+$" required type="number" placeholder="number" data-message="No number was entered." title="My Number" value="123" /></label>
+						</fieldset>
+					</fieldset>
+					<fieldset class="form-full">
+						<legend>Your Comments</legend>
+						<label>Message: <textarea name="form_comments" data-message="No comments were entered." title="Message"></textarea></label>
+						<fieldset class="form-list">
+							<legend><label for="form_option_a">Options:</label></legend>
+							<label><input name="form_updates" type="checkbox" data-message="You have not signed up for updates." title="Options" value="1" /> Sign me up for updates</label>
+							<label><input name="form_agree" required type="checkbox" data-message="You have not agreed to the terms and conditions." title="Agreement" value="1" checked/> I agree with the <a href="#">terms and conditions</a><em>*</em></label>
+						</fieldset>
+					</fieldset>
+					<footer>
+						<em>* Indicates a required field</em>
+						<button type="submit" name="form_submit">Submit</button>
+					</footer>
+				</form>
+				<script src="./js/poster.js"></script>
+				<script>
+				//<!--
+					var Poster = new Poster({
+						'form' : document.getElementById('poster-form'),
+						'response' : document.getElementById('poster-response')
+					});
+				//-->
+				</script>
+				<!-- Cut above this -->
+
+			</aside>
+		</section>
 	</body>
 </html>
